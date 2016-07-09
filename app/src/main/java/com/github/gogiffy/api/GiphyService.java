@@ -22,4 +22,12 @@ public interface GiphyService {
             @Query("offset") int offset
     );
 
+
+    @GET("/v1/gifs/trending")
+    Call<GifList> trending(
+            @Query("api_key") String apiKey,
+            @Query("limit") int limit,
+            @Query("offset") int offset
+    );
+
 }

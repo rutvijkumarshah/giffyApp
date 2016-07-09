@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -9,8 +10,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".activities.SearchActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+<EditText
+    android:id="@+id/etSearchGif"
+    android:hint="@string/searchGifsHere"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:id="@+id/frm_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></FrameLayout>
+</LinearLayout>

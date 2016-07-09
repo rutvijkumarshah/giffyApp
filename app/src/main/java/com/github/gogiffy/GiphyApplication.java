@@ -28,6 +28,8 @@ public class GiphyApplication extends Application {
         //Setup API Endpoint
         api=new Api();
 
+
     }
+
 
 }
