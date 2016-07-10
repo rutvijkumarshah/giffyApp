@@ -1,14 +1,10 @@
-- Staggered Grid with CardView
-- on Tap open new Activity
-- Endless Scrolling and pagination
-- Full Image View Activity
+- Staggered Grid with CardView [Done]
+- on Tap open new Activity [Done]
+- Endless Scrolling and pagination [Done]
+- Full Image View Activity [Done]
 - Landscap mode  support : Survinign config changes and using fixed width images for landscape
-- Network unvailable detection and display
-- Search by voice
-- Search Tool bar
-- Bitmap Cache
+- Network unvailable detection and display [Done]
 - MVP
 - Espresso Test cases
-- Code Cleanup
 - Spelling Fix
--
+- Moving dps to constants

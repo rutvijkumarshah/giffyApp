@@ -1,10 +1,13 @@
 package com.github.gogiffy.activities;
 
 import android.support.v4.app.FragmentTransaction;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 import android.text.Editable;
 import android.text.TextWatcher;
+
 import android.widget.EditText;
 
 import com.github.gogiffy.R;
@@ -34,11 +37,13 @@ public class SearchActivity extends AppCompatActivity implements TextWatcher {
         mSearchText.addTextChangedListener(this);
     }
 
+
+
     private void setupFragment() {
         FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
         gridFragment = (GifGridFragment) getSupportFragmentManager().findFragmentByTag(Constants.FRAG_TAG_GIFGRID);
         if(gridFragment == null){
-            gridFragment=GifGridFragment.newInstance();
+            gridFragment=GifGridFragment.newInstance(Constants.DEFAULT_GRID_SPANS);
         }
         ft.replace(R.id.frm_fragment,gridFragment,Constants.FRAG_TAG_GIFGRID);
         ft.commit();
@@ -63,14 +68,9 @@ public class SearchActivity extends AppCompatActivity implements TextWatcher {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        gridFragment.displaySearchedGifs(editable.toString());
-                    }
-                });
+                gridFragment.displaySearchedGifs(editable.toString());
             }
-        },800);
+        },Constants.SEARCH_DELAY_AFTER_CHANGED);
     }
+
 }

@@ -2,6 +2,7 @@ package com.github.gogiffy.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
 
 import com.github.gogiffy.GiphyApplication;
 import com.github.gogiffy.R;
@@ -25,8 +26,6 @@ import com.github.gogiffy.util.GifListCallback;
 import java.util.ArrayList;
 
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by Rutvijkumar Shah on 7/9/16.
@@ -39,16 +38,19 @@ public class GifGridFragment extends Fragment{
 
     private boolean trendingGifsDisplayed=true;
     private String mSearchKeyword;
+    private int mGridSpans=Constants.DEFAULT_GRID_SPANS;
+    private int mOrientation;
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         app= (GiphyApplication) getActivity().getApplication();
+        final Bundle arguments = getArguments();
+        if(arguments!=null){
+            mGridSpans=arguments.getInt(Constants.ARGS_GRID_FRAG_SPAN);
+            mOrientation=arguments.getInt(Constants.ARGS_GRID_FRAG_ORIENTATION);
+        }
     }
 
     @Nullable
@@ -65,8 +67,9 @@ public class GifGridFragment extends Fragment{
         //initialize Adapter
         mGifAdapter=new GifAdapter(new ArrayList<Gif>());
         mGifRecyclerView.setAdapter(mGifAdapter);
+        mGifRecyclerView.setHasFixedSize(true);
 
-        final StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
+        final StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(mGridSpans, StaggeredGridLayoutManager.VERTICAL);
         mGifRecyclerView.setLayoutManager(layoutManager);
         mGifRecyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(layoutManager) {
             @Override
@@ -103,7 +106,11 @@ public class GifGridFragment extends Fragment{
         searchReq.enqueue(new GifListCallback(mGifAdapter,page,mGifRecyclerView));
     }
 
-    public static GifGridFragment newInstance() {
-        return new GifGridFragment();
+    public static GifGridFragment newInstance(int span) {
+        Bundle args = new Bundle();
+        args.putInt(Constants.ARGS_GRID_FRAG_SPAN, span);
+        final GifGridFragment gifGridFragment = new GifGridFragment();
+        gifGridFragment.setArguments(args);
+        return gifGridFragment;
     }
 }

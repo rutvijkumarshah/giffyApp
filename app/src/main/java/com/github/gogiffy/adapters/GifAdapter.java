@@ -2,6 +2,7 @@ package com.github.gogiffy.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,7 +23,9 @@ import static  com.github.gogiffy.util.Constants.*;
 /**
  * Created by Rutvijkumar Shah on 7/9/16.
  */
-public class GifAdapter extends RecyclerView.Adapter<GifAdapter.ViewHolder> {
+public class GifAdapter extends RecyclerView.Adapter<GifAdapter.ViewHolder> implements ResultUpdater {
+
+
 
 
     public Gif getGifByPosition(int pos) {
@@ -33,9 +36,9 @@ public class GifAdapter extends RecyclerView.Adapter<GifAdapter.ViewHolder> {
         return gif;
     }
 
-    interface GifProvider{
-        Gif getGifByPosition(int pos);
-    }
+//    interface GifProvider{
+//        Gif getGifByPosition(int pos);
+//    }
     private List<Gif> mGifs;
     private WeakReference<Context> mWkContext;
 
@@ -55,14 +58,22 @@ public class GifAdapter extends RecyclerView.Adapter<GifAdapter.ViewHolder> {
         final Context context=mWkContext.get();
         if(context!=null) {
             final Gif gif = mGifs.get(position);
+            String url=gif.images.fixed_height_still.url;
+            int orientation=holder.mImageView.getContext().getResources().getConfiguration().orientation;
+
+            if(orientation == Configuration.ORIENTATION_LANDSCAPE){
+
+                url=gif.images.fixed_height_still.url;
+                Log.d(TAG, ">>>>>> Orientation is Landscape ");
+            }else if (orientation == Configuration.ORIENTATION_PORTRAIT){
+                Log.d(TAG, ">>>>>> Orientation is Potrait ");
+                url=gif.images.fixed_width_still.url;
+            }
             Picasso.with(context)
-                    .load(gif.images.fixed_height_still.url)
+                    .load(url)
                     .placeholder(R.drawable.optimized_image_loading)
                     .error(R.drawable.image_not_available)
                     .into(holder.mImageView);
-
-
-
         }
     }
 
@@ -91,6 +102,13 @@ public class GifAdapter extends RecyclerView.Adapter<GifAdapter.ViewHolder> {
         mGifs.addAll(gifs);
         notifyItemRangeInserted(curSize, gifs.size());
     }
+
+    @Override
+    public void clearAll() {
+        mGifs.clear();
+        notifyDataSetChanged();
+    }
+
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView mImageView;
         public GifAdapter mAdapter;

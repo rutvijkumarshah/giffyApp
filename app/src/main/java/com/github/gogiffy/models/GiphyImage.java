@@ -14,6 +14,6 @@ public class GiphyImage{
 		String size;
 	}
 	public ImgInfo original;
-	public ImgInfo downsized;
     public ImgInfo fixed_height_still;
+	public ImgInfo fixed_width_still;
 }

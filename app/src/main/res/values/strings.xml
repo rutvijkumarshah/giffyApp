@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">GoGiffy</string>
     <string name="searchGifsHere">Search Here</string>
+    <string name="network_error">Network error,please check your connectivity and retry</string>
 </resources>

@@ -1,12 +1,13 @@
 package com.github.gogiffy.util;
 
-import android.app.Activity;
-import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
+import android.util.Log;
 
-import com.github.gogiffy.adapters.GifAdapter;
+
+import com.github.gogiffy.R;
+
+import com.github.gogiffy.adapters.ResultUpdater;
 import com.github.gogiffy.models.GifList;
 
 import java.lang.ref.WeakReference;
@@ -22,29 +23,32 @@ public class GifListCallback implements Callback<GifList> {
 
     private final int page;
     private WeakReference<RecyclerView> mWKRecyclerView;
-    private GifAdapter adapter;
+    private ResultUpdater mResultUpdater;
 
-    public GifListCallback(GifAdapter adapter, int page, RecyclerView recyclerView){
-        this.mWKRecyclerView=new WeakReference<RecyclerView>(recyclerView);
+    public GifListCallback(ResultUpdater resultUpdater, int page, RecyclerView recyclerView){
+        this.mWKRecyclerView=new WeakReference<>(recyclerView);
         this.page=page;
-        this.adapter=adapter;
+        this.mResultUpdater=resultUpdater;
     }
     @Override
     public void onResponse(Call<GifList> call, Response<GifList> response) {
         final GifList list = response.body();
         if(page == 0) {
-            adapter.addNewResults(list.getData());
+            //adapter.addNewResults(list.getData());
+            mResultUpdater.clearAll();
+            mResultUpdater.addAll(list.getData());
         }else{
-            adapter.addAll(list.getData());
+            mResultUpdater.addAll(list.getData());
         }
-
     }
 
     @Override
     public void onFailure(Call<GifList> call, Throwable t) {
+        Log.d(Constants.TAG, "Error : "+t.getLocalizedMessage());
         final RecyclerView rv = mWKRecyclerView.get();
         if(rv !=null) {
-            Snackbar.make(rv, "Hello SnackBar!", Snackbar.LENGTH_SHORT)
+            final String neworkError = rv.getContext().getResources().getString(R.string.network_error);
+            Snackbar.make(rv, neworkError, Snackbar.LENGTH_SHORT)
                     .setDuration(4000).show();
         }
     }

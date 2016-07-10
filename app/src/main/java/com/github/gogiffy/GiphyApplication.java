@@ -3,6 +3,7 @@ package com.github.gogiffy;
 import android.app.Application;
 
 import com.github.gogiffy.api.Api;
+import com.squareup.leakcanary.LeakCanary;
 import com.squareup.picasso.Picasso;
 
 
@@ -29,18 +30,16 @@ public class GiphyApplication extends Application {
         //setup Picasso
         setupPicasso();
 
+        LeakCanary.install(this); //only for testing debugging
+
     }
 
     private void setupPicasso() {
-        /**Cache diskCache = new Cache(getDir(CacheConstants.DISK_CACHE_DIRECTORY, Context.MODE_PRIVATE), CacheConstants.DISK_CACHE_SIZE);
-         OkHttpClient okHttpClient = new OkHttpClient();
-         okHttpClient.setCache(diskCache);
-         */
 
         Picasso picasso = new Picasso.Builder(this)
                 .build();
-        picasso.setIndicatorsEnabled(true); // For debugging
-        picasso.setLoggingEnabled(true);
+        //picasso.setIndicatorsEnabled(true); // For debugging
+        //picasso.setLoggingEnabled(true);
         Picasso.setSingletonInstance(picasso);
     }
 
