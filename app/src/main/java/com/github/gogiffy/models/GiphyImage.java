@@ -15,4 +15,5 @@ public class GiphyImage{
 	}
 	public ImgInfo original;
 	public ImgInfo downsized;
+    public ImgInfo fixed_height_still;
 }

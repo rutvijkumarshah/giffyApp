@@ -8,4 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="FullScreenDialogTheme" parent="Theme.AppCompat.DayNight.NoActionBar"/>
+
 </resources>

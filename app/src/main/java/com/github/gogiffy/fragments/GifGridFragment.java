@@ -6,9 +6,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.github.gogiffy.GiphyApplication;
 import com.github.gogiffy.R;
@@ -26,7 +28,7 @@ import retrofit2.Response;
 /**
  * Created by Rutvijkumar Shah on 7/9/16.
  */
-public class GifGridFragment extends Fragment {
+public class GifGridFragment extends Fragment{
 
     private RecyclerView mGifRecyclerView;
     private GifAdapter mGifAdapter;
@@ -57,12 +59,15 @@ public class GifGridFragment extends Fragment {
         //initialize Adapter
         mGifAdapter=new GifAdapter(new ArrayList<Gif>());
         mGifRecyclerView.setAdapter(mGifAdapter);
-        mGifRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        RecyclerView.LayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
+       // layoutManager=new LinearLayoutManager(getContext());
+        mGifRecyclerView.setLayoutManager(layoutManager);
         loadTrendingGifs();
     }
 
     private void loadTrendingGifs() {
-        final Call<GifList> search = app.getApi().getGiphySerivce().trending(GiphyService.GIPHY_KEY, 10, 0);
+        final Call<GifList> search = app.getApi().getGiphySerivce().trending(GiphyService.GIPHY_KEY, 30, 0);
         search.enqueue(new Callback<GifList>() {
             @Override
             public void onResponse(Call<GifList> call, Response<GifList> response) {
@@ -72,7 +77,27 @@ public class GifGridFragment extends Fragment {
 
             @Override
             public void onFailure(Call<GifList> call, Throwable t) {
+                Toast.makeText(getContext(),"Failed to load trending Gifs",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
+    public void displaySearchedGifs(String searchKeyword){
+        if(searchKeyword == null || searchKeyword.trim().length() ==0){
+            loadTrendingGifs();
+            return;
+        }
+        final Call<GifList> search = app.getApi().getGiphySerivce().search(GiphyService.GIPHY_KEY,searchKeyword, 30, 0);
+        search.enqueue(new Callback<GifList>() {
+            @Override
+            public void onResponse(Call<GifList> call, Response<GifList> response) {
+                final GifList list = response.body();
+                mGifAdapter.addNewResults(list.getData());
+            }
+
+            @Override
+            public void onFailure(Call<GifList> call, Throwable t) {
+                Toast.makeText(getContext(),"Failed to load searched Gifs",Toast.LENGTH_SHORT).show();
             }
         });
     }
