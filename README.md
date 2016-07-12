@@ -14,7 +14,7 @@ When one of the images in the grid is tapped, the screen moves to show the image
 - Fullscreen of Image is scaled with adjusting view bounds so image looks normal (not streched ).
 - Not used Dagger/ButterKnife because of this simple UI, which are otherwise important opensource lib for app.
 
-## Third Party Utilities/source used for building this app:
+## Third Party Utilities/source used :
 
  1. Retrofit
  2. Okhttp
