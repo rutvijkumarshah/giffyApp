@@ -11,7 +11,7 @@ When one of the images in the grid is tapped, the screen moves to show the image
 
 ## Assumptions:
 - For search filed separate EditText is used instead of SearchView in ActionBar
-- Fullscreen of Image is scaled with adjusting view bounds so image looks normal not streched by XY fit.
+- Fullscreen of Image is scaled with adjusting view bounds so image looks normal (not streched ).
 - Not used Dagger/ButterKnife because of this simple UI, which are otherwise important opensource lib for app.
 
 ## Third Party Utilities/source used for building this app:
@@ -25,4 +25,4 @@ When one of the images in the grid is tapped, the screen moves to show the image
  7. EndlessRecyclerViewScrollListener
 
 ## Limitations
--  Currently App does not support animating gifs
+-  Currently App does not support animating gif.
