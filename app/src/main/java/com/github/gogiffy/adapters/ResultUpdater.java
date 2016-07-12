@@ -9,8 +9,8 @@ import java.util.List;
  */
 public interface ResultUpdater {
     /**
-     *
      * Updates results by combining existing reuslt with inputs
+     *
      * @param gifs
      */
     void addAll(List<Gif> gifs);

@@ -1,8 +1,6 @@
 package com.github.gogiffy.api;
 
 
-
-
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -15,13 +13,13 @@ public class Api {
     private Retrofit retrofit;
     private GiphyService service;
 
-    public Api(){
+    public Api() {
         init();
     }
 
-    private void init(){
+    private void init() {
 
-        if(service ==null) {
+        if (service == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(GIPHY_BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
@@ -29,7 +27,8 @@ public class Api {
             service = retrofit.create(GiphyService.class);
         }
     }
-    public GiphyService getGiphySerivce(){
+
+    public GiphyService getGiphySerivce() {
         return service;
     }
 

@@ -5,9 +5,9 @@ package com.github.gogiffy.util;
  */
 public interface Constants {
 
-    String FRAG_TAG_GIFGRID="GRID_OF_GIFS";
+    String FRAG_TAG_GIFGRID = "GRID_OF_GIFS";
     String EXTRA_FULL_IMG_URL = "EXTRA_FULL_IMG_URL";
-    String TAG="[GO_GIPHY]";
+    String TAG = "[GO_GIPHY]";
     int PAGE_SIZE = 30;
     long SEARCH_DELAY_AFTER_CHANGED = 800;//IN Millis
     String ARGS_GRID_FRAG_SPAN = "ARGS_GRID_FRAG_SPAN";

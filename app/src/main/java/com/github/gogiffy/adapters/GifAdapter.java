@@ -2,7 +2,6 @@ package com.github.gogiffy.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,7 +17,8 @@ import com.squareup.picasso.Picasso;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
-import static  com.github.gogiffy.util.Constants.*;
+
+import static com.github.gogiffy.util.Constants.TAG;
 
 /**
  * Created by Rutvijkumar Shah on 7/9/16.
@@ -26,39 +26,35 @@ import static  com.github.gogiffy.util.Constants.*;
 public class GifAdapter extends RecyclerView.Adapter<GifAdapter.ViewHolder> implements ResultUpdater {
 
 
+    private List<Gif> mGifs;
+    private WeakReference<Context> mWkContext;
 
+    public GifAdapter(List<Gif> gifs) {
+        mGifs = gifs;
+    }
 
     public Gif getGifByPosition(int pos) {
-        Gif gif=null;
-        if(pos >=0 && pos < mGifs.size()){
-            gif=mGifs.get(pos);
+        Gif gif = null;
+        if (pos >= 0 && pos < mGifs.size()) {
+            gif = mGifs.get(pos);
         }
         return gif;
     }
 
-//    interface GifProvider{
-//        Gif getGifByPosition(int pos);
-//    }
-    private List<Gif> mGifs;
-    private WeakReference<Context> mWkContext;
-
-    public GifAdapter(List<Gif> gifs){
-        mGifs=gifs;
-    }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_gif,parent,false);
-        mWkContext=new WeakReference<Context>(parent.getContext());
-        return  new ViewHolder(view,this);
+        View view = inflater.inflate(R.layout.item_gif, parent, false);
+        mWkContext = new WeakReference<Context>(parent.getContext());
+        return new ViewHolder(view, this);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final Context context=mWkContext.get();
-        if(context!=null) {
+        final Context context = mWkContext.get();
+        if (context != null) {
             final Gif gif = mGifs.get(position);
-            String url=gif.images.fixed_height_still.url;
+            String url = gif.images.fixed_height_still.url;
             Picasso.with(context)
                     .load(url)
                     .placeholder(R.drawable.optimized_image_loading)
@@ -72,22 +68,23 @@ public class GifAdapter extends RecyclerView.Adapter<GifAdapter.ViewHolder> impl
         return mGifs.size();
     }
 
-    public  void addNewResults(List<Gif> gifs){
+    public void addNewResults(List<Gif> gifs) {
         mGifs.clear();
         mGifs.addAll(gifs);
         notifyDataSetChanged();
     }
 
-    void showFullImage(String url){
+    void showFullImage(String url) {
         final Context context = mWkContext.get();
-        if(context !=null) {
+        if (context != null) {
             Intent intent = new Intent(context, FullImageViewActivity.class);
-            intent.putExtra(Constants.EXTRA_FULL_IMG_URL,url);
+            intent.putExtra(Constants.EXTRA_FULL_IMG_URL, url);
             context.startActivity(intent);
         }
     }
-    public void addAll(List<Gif> gifs){
-        int curSize=getItemCount();
+
+    public void addAll(List<Gif> gifs) {
+        int curSize = getItemCount();
         mGifs.addAll(gifs);
         notifyItemRangeInserted(curSize, gifs.size());
     }
@@ -101,10 +98,11 @@ public class GifAdapter extends RecyclerView.Adapter<GifAdapter.ViewHolder> impl
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView mImageView;
         public GifAdapter mAdapter;
-        public ViewHolder(View itemView,GifAdapter adapter) {
+
+        public ViewHolder(View itemView, GifAdapter adapter) {
             super(itemView);
-            mAdapter=adapter;
-            mImageView=(ImageView) itemView.findViewById(R.id.imgGif);
+            mAdapter = adapter;
+            mImageView = (ImageView) itemView.findViewById(R.id.imgGif);
             mImageView.setOnClickListener(this);
         }
 
@@ -114,8 +112,8 @@ public class GifAdapter extends RecyclerView.Adapter<GifAdapter.ViewHolder> impl
             int position = getLayoutPosition(); // gets item position
 
             Gif gif = mAdapter.getGifByPosition(position);
-            if(gif !=null){
-                Log.d(TAG, " onclick of View Holder : "+gif.images.original.url);
+            if (gif != null) {
+                Log.d(TAG, " onclick of View Holder : " + gif.images.original.url);
                 mAdapter.showFullImage(gif.images.original.url);
             }
 

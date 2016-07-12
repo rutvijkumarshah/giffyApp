@@ -1,13 +1,10 @@
 package com.github.gogiffy.activities;
 
 import android.content.Intent;
-import android.os.PersistableBundle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.gogiffy.R;
 import com.github.gogiffy.util.Constants;
@@ -24,11 +21,11 @@ public class FullImageViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_image_view);
         final Intent intent = getIntent();
-        if(intent !=null){
-            mUrl=intent.getExtras().getString(Constants.EXTRA_FULL_IMG_URL, null);
+        if (intent != null) {
+            mUrl = intent.getExtras().getString(Constants.EXTRA_FULL_IMG_URL, null);
         }
-        mImgView= (ImageView) findViewById(R.id.imgFullScreenImage);
-        mTvUrl=(TextView) findViewById(R.id.tvURL);
+        mImgView = (ImageView) findViewById(R.id.imgFullScreenImage);
+        mTvUrl = (TextView) findViewById(R.id.tvURL);
         setTheme(R.style.FullScreenDialogTheme);
         getSupportActionBar().hide();
     }
