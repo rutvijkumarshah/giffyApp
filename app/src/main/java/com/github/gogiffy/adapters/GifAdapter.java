@@ -59,16 +59,6 @@ public class GifAdapter extends RecyclerView.Adapter<GifAdapter.ViewHolder> impl
         if(context!=null) {
             final Gif gif = mGifs.get(position);
             String url=gif.images.fixed_height_still.url;
-            int orientation=holder.mImageView.getContext().getResources().getConfiguration().orientation;
-
-            if(orientation == Configuration.ORIENTATION_LANDSCAPE){
-
-                url=gif.images.fixed_height_still.url;
-                Log.d(TAG, ">>>>>> Orientation is Landscape ");
-            }else if (orientation == Configuration.ORIENTATION_PORTRAIT){
-                Log.d(TAG, ">>>>>> Orientation is Potrait ");
-                url=gif.images.fixed_width_still.url;
-            }
             Picasso.with(context)
                     .load(url)
                     .placeholder(R.drawable.optimized_image_loading)
@@ -91,7 +81,6 @@ public class GifAdapter extends RecyclerView.Adapter<GifAdapter.ViewHolder> impl
     void showFullImage(String url){
         final Context context = mWkContext.get();
         if(context !=null) {
-            Log.d(TAG,  " URL ="+url);
             Intent intent = new Intent(context, FullImageViewActivity.class);
             intent.putExtra(Constants.EXTRA_FULL_IMG_URL,url);
             context.startActivity(intent);
@@ -123,11 +112,10 @@ public class GifAdapter extends RecyclerView.Adapter<GifAdapter.ViewHolder> impl
         public void onClick(View v) {
 
             int position = getLayoutPosition(); // gets item position
-            Log.d(TAG, ">>>>>    onclick of View Holder");
+
             Gif gif = mAdapter.getGifByPosition(position);
             if(gif !=null){
-                Log.d(TAG, ">>>>>    onclick of View Holder : "+gif.url);
-                Log.d(TAG, ">>>>>    onclick of View Holder : "+gif.images.original.url);
+                Log.d(TAG, " onclick of View Holder : "+gif.images.original.url);
                 mAdapter.showFullImage(gif.images.original.url);
             }
 

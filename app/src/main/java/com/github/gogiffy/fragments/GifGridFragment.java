@@ -74,7 +74,6 @@ public class GifGridFragment extends Fragment{
         mGifRecyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(layoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {
-                Log.d(Constants.TAG, String.format(">>>>>>>>>>> Page=%d totalItemsCount=%d trendingGifDisplayed=%s",page,totalItemsCount,String.valueOf(trendingGifsDisplayed)));
                 if(trendingGifsDisplayed){
                     loadTrendingGifs(page);
                 }else{
