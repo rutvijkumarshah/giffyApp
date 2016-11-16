@@ -11,12 +11,14 @@
 
 //Build script starts from here
 buildscript {
+    //V2
 
-
+    // More changes
    // ??? Why only jcenter 	
     repositories {
         jcenter()
     }
+
 
    //dependency goes here	
     dependencies {
@@ -36,6 +38,7 @@ allprojects {
     }
 }
 
+// Clean task
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
