@@ -1,9 +1,24 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+
+
+
+// Empty lines just for stupidy test
+
+
+
+
+
+//Build script starts from here
 buildscript {
+
+
+   // ??? Why only jcenter 	
     repositories {
         jcenter()
     }
+
+   //dependency goes here	
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.2'
 
