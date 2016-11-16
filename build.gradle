@@ -1,18 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-
-
-
-// Empty lines just for stupidy test
-
-
-
-
-
-//Build script starts from here
 buildscript {
     //V2
-
     // More changes
    // ??? Why only jcenter 	
     repositories {
@@ -37,7 +26,6 @@ allprojects {
         resolutionStrategy.force 'com.android.support:support-annotations:23.4.0'
     }
 }
-
 // Clean task
 task clean(type: Delete) {
     delete rootProject.buildDir
