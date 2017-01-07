@@ -68,9 +68,10 @@ public class SearchActivity extends AppCompatActivity implements TextWatcher {
         DoNothingWithPurposeToInvokeLint();
     }
 
+    public void TEST_HERE(String anotherBadCodeExample[]){
+        
+    }
     public void DoNothingWithPurposeToInvokeLint(){
-
-
 
 
         String simple_violation_here =     "sonar should catch this format issue hopefully";
