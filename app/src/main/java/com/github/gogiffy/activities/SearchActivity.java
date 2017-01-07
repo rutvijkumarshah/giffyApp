@@ -64,6 +64,8 @@ public class SearchActivity extends AppCompatActivity implements TextWatcher {
         boolean isX=x==4;
     }
 
+    public void unUsedMethod(String x, String y){}
+    
     @Override
     public void afterTextChanged(final Editable editable) {
 
