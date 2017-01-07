@@ -69,7 +69,15 @@ public class SearchActivity extends AppCompatActivity implements TextWatcher {
     }
 
     public void TEST_HERE(String anotherBadCodeExample[]){
+
+
+
+
+
+
+
         
+
     }
     public void DoNothingWithPurposeToInvokeLint(){
 
