@@ -68,6 +68,9 @@ public class SearchActivity extends AppCompatActivity implements TextWatcher {
     public void afterTextChanged(final Editable editable) {
 
         timer = new Timer();
+
+
+        
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
