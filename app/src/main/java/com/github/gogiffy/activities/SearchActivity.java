@@ -80,5 +80,11 @@ public class SearchActivity extends AppCompatActivity implements TextWatcher {
 
 
     }
+    private  void    anotherBadCode(){
+        Integer x = 1000;
+                String  vals[]   = new String[]{ "T"};
+        if (x.equals(10))
+                     System.out.print("Bad");
+    }
 
 }
