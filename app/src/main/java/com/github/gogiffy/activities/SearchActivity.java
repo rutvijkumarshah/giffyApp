@@ -65,6 +65,20 @@ public class SearchActivity extends AppCompatActivity implements TextWatcher {
                 gridFragment.displaySearchedGifs(editable.toString());
             }
         }, Constants.SEARCH_DELAY_AFTER_CHANGED);
+        DoNothingWithPurposeToInvokeLint();
+    }
+
+    public void DoNothingWithPurposeToInvokeLint(){
+
+
+
+
+        String simple_violation_here =     "sonar should catch this format issue hopefully";
+        if(simple_violation_here == null)
+            System.out.println("Bad bad code");
+
+
+
     }
 
 }
