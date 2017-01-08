@@ -42,6 +42,7 @@ public class GiphyApplication extends Application {
         //picasso.setLoggingEnabled(true);
         Picasso.setSingletonInstance(picasso);
     }
-
+    
+    private void VERYVERYVERYBADMETHOD(){}
 
 }
