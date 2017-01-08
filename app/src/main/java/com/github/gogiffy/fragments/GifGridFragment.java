@@ -88,6 +88,11 @@ public class GifGridFragment extends Fragment {
         loadTrendingGifs(0);
     }
 
+    private void unUsedMethod(String args){
+        String LONG_LONG_INVALID_STRING="NOT SO FORMATED CODE";
+        
+        return true;
+    }
     private void loadTrendingGifs(final int page) {
         trendingGifsDisplayed = true;
         mSearchKeyword = null;
