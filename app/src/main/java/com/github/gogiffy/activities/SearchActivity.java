@@ -32,7 +32,8 @@ public class SearchActivity extends AppCompatActivity implements TextWatcher {
         mSearchText.addTextChangedListener(this);
     }
 
-
+    private void newEmptyMethod(){}
+    
     private void setupFragment() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         gridFragment = (GifGridFragment) getSupportFragmentManager().findFragmentByTag(Constants.FRAG_TAG_GIFGRID);
