@@ -95,6 +95,8 @@ public class GifAdapter extends RecyclerView.Adapter<GifAdapter.ViewHolder> impl
         notifyDataSetChanged();
     }
 
+    public void TestHere(){}
+    
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView mImageView;
         public GifAdapter mAdapter;
