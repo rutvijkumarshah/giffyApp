@@ -45,8 +45,10 @@ public class SearchActivity extends AppCompatActivity implements TextWatcher {
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+            unUsedMethodTest(null);
     }
+
+    private void unUsedMethodTest( String args[]){}
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
