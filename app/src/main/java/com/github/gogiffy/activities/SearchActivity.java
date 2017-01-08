@@ -50,10 +50,21 @@ public class SearchActivity extends AppCompatActivity implements TextWatcher {
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        if (timer != null) {
-            timer.cancel();
+        String      invalid_variable_stye_here_its_too_long_too2 =    "" +
+                "adfafaf asfas fsafasff";
+        String    spelingMistake=null;
+        String    invalid_variable_stye_here_its_too_long_too =    "" +
+                "adfafaf asfas fsafasff";
+        if (timer != null)     {
+                timer.cancel();
         }
+        //invalid_variable_stye_here_its_too_long_too.isEmpty()
+        /// Some other bad coding style
+         int x=4;
+          boolean isX=x==4;
     }
+
+    public void unUsedMethod(String x, String y){}
 
     @Override
     public void afterTextChanged(final Editable editable) {
