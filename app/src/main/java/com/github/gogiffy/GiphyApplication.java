@@ -23,8 +23,6 @@ public class GiphyApplication extends Application {
     public Api getApi() {
         return api;
     }
-
-    public void PleaseAutoDetectThisBadMethod(String x, String y){}
     
     private void setup() {
         //Setup API Endpoint
