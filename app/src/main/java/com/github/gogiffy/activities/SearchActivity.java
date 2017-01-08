@@ -57,7 +57,6 @@ public class SearchActivity extends AppCompatActivity implements TextWatcher {
 
     @Override
     public void afterTextChanged(final Editable editable) {
-
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -65,6 +64,8 @@ public class SearchActivity extends AppCompatActivity implements TextWatcher {
                 gridFragment.displaySearchedGifs(editable.toString());
             }
         }, Constants.SEARCH_DELAY_AFTER_CHANGED);
+
+        String never_USED_BAD_Style="hOPE Its get deteceted";
     }
 
 }
