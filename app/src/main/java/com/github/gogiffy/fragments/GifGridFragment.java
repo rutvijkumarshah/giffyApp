@@ -88,6 +88,7 @@ public class GifGridFragment extends Fragment {
         loadTrendingGifs(0);
     }
 
+    public void UnusedBadNameMethod(String x, String y){}
     private void loadTrendingGifs(final int page) {
         trendingGifsDisplayed = true;
         mSearchKeyword = null;
