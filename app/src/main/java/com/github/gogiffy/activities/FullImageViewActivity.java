@@ -2,6 +2,7 @@ package com.github.gogiffy.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,6 +29,10 @@ public class FullImageViewActivity extends AppCompatActivity {
         mTvUrl = (TextView) findViewById(R.id.tvURL);
         setTheme(R.style.FullScreenDialogTheme);
         getSupportActionBar().hide();
+        boolean withoutManifestDefination = badCodeTocheckPermissionWithoutManifestDefination();
+        if(withoutManifestDefination){
+            mImgView.setImageDrawable(null);
+        }
     }
 
     @Override
@@ -39,5 +44,14 @@ public class FullImageViewActivity extends AppCompatActivity {
                 .error(R.drawable.image_not_available)
                 .into(mImgView);
         mTvUrl.setText(mUrl);
+    }
+    public boolean badCodeTocheckPermissionWithoutManifestDefination(){
+        this.getContentResolver().
+                query(CalendarContract.Calendars.CONTENT_URI,
+                        null,
+                        null,
+                        null,
+                        null);
+        return false;
     }
 }
