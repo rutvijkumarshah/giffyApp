@@ -87,7 +87,8 @@ public class GifGridFragment extends Fragment {
         });
         loadTrendingGifs(0);
     }
-
+    public void testThisPR(){
+    }
     private void loadTrendingGifs(final int page) {
         trendingGifsDisplayed = true;
         mSearchKeyword = null;
