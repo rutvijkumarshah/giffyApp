@@ -16,6 +16,8 @@ public class FullImageViewActivity extends AppCompatActivity {
     private ImageView mImgView;
     private TextView mTvUrl;
 
+    public void testHere(){}
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
