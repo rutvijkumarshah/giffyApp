@@ -14,4 +14,6 @@ public interface Constants {
     int DEFAULT_GRID_SPANS = 3;
     String EXTRA_SEARCH_KEYWORD = "EXTRA_SEARCH_KEYWORD";
     String ARGS_GRID_FRAG_ORIENTATION = "ARGS_GRID_FRAG_ORIENTATION";
+    
+    public void badCodeHere(){}
 }
