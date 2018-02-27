@@ -1,8 +1,69 @@
+############
+# IntelliJ #
+############
+
 *.iml
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
+*.ipr
+*.iws
+.idea/
+out/
+
+##########
+# Gradle #
+##########
+
+.gradle/
+build/
+
+##################
+# Android Studio #
+##################
+
+local.properties
+*Test Results*.html
+captures/*
+
+##########
+# Mac OS #
+##########
+
 .DS_Store
-/build
-/captures
+
+##########################
+# Linux temporary files #
+##########################
+
+*~
+
+
+###############################
+# Android studio config files #
+###############################
+
+!.idea/codeStyleSettings.xml
+!.idea/copyright/profiles_settings.xml
+
+###############################
+# Server Gitignore files #
+###############################
+*.DS_Store
+*.iml
+**/*.iml
+*.ipr
+*.iws
+.gradle
+.idea
+build
+out
+classes
+
+#Eclipse
+
+**/*.project
+**/*.classpath
+.metadata
+bin/
+tmp/
+local.properties
+.settings/
+atlassian-ide-plugin.xml
